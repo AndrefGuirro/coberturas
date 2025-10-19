@@ -1,5 +1,14 @@
 // app.js - versão compatível com seu HTML atual (IDs: newListForm, listsContainer, newItemForm, itemsList, etc.)
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+      .then(() => console.log('Service Worker registrado.'))
+      .catch((err) => console.log('Erro ao registrar o Service Worker:', err));
+  });
+}
+
+
 // ------- FIREBASE CONFIG: cole suas credenciais aqui -------
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
@@ -8,6 +17,8 @@ const firebaseConfig = {
   // ...
 };
 // -----------------------------------------------------------
+
+
 
 let useFirebase = false;
 let db = null;
