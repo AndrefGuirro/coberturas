@@ -433,21 +433,27 @@ function atualizarContador() {
 
 // ---------- PWA: INSTALL BUTTON ----------
 let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  if (installBtn) installBtn.classList.remove('d-none');
+  installButton.style.display = 'block';
 });
 
-if (installBtn) {
-  installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if (outcome === 'accepted' && installBtn) installBtn.classList.add('d-none');
-    deferredPrompt = null;
-  });
-}
+installButton.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  if (outcome === 'accepted') {
+    console.log('Usuário aceitou instalar o app.');
+  } else {
+    console.log('Usuário recusou a instalação.');
+  }
+  deferredPrompt = null;
+  installButton.style.display = 'none';
+});
+
 
 // ---------- UTIL ----------
 function escapeHtml(text) {
