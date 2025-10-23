@@ -12,3 +12,19 @@ small.text-muted { color: rgba(255,255,255,0.6) !important; }
   font-size: 0.9rem;
   background-color: #111;
 }
+
+/* animação do bloco de listas */
+#listsContent {
+  transition: max-height 0.28s ease, opacity 0.25s ease;
+  overflow: hidden;
+  max-height: 1000px; /* valor alto suficiente para o conteúdo */
+  opacity: 1;
+}
+
+/* estado recolhido */
+#listsContent.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+

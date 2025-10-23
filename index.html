@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-  <!-- Conteúdo principal -->
+  <!-- Conteúdo principal (adicionado mb-5 para não ficar sob o footer fixo) -->
   <main class="container py-3 mb-5">
     <div class="row g-3">
 
@@ -47,20 +47,25 @@
       <aside class="col-12 col-md-4">
         <div class="card bg-secondary text-light">
           <div class="card-body">
-            <h5 class="card-title">Listas de Coberturas</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0">Listas de Coberturas</h5>
+              <button id="toggleListsBtn" class="btn btn-sm btn-outline-light" aria-label="Recolher listas">
+                <i class="bi bi-chevron-up"></i>
+              </button>
+            </div>
 
-            <form id="newListForm" class="mb-2" autocomplete="off">
-              <div class="input-group">
-                <input id="newListTitle" class="form-control" placeholder="Nome de nova lista" required>
-                <button class="btn btn-success" type="submit">Criar</button>
-              </div>
-            </form>
+            <!-- bloco que será recolhido/expandido -->
+            <div id="listsContent">
+              <form id="newListForm" class="mb-2" autocomplete="off">
+                <div class="input-group">
+                  <input id="newListTitle" class="form-control" placeholder="Nome de nova lista" required>
+                  <button class="btn btn-success" type="submit">Criar</button>
+                </div>
+              </form>
 
-            <ul id="listsContainer" class="list-group list-group-flush"></ul>
+              <ul id="listsContainer" class="list-group list-group-flush"></ul>
+            </div><!-- /listsContent -->
 
-            <small class="d-block mt-2 text-muted">
-              <!-- Os dados ficam salvos localmente e no Firebase (se configurado). -->
-            </small>
           </div>
         </div>
       </aside>
@@ -113,12 +118,12 @@
   <footer class="footer bg-dark text-center text-light py-2 fixed-bottom border-top border-secondary">
     <div class="container">
       <small id="contador">Concluídos: 0 | Restantes: 0</small>
+      <div class="mt-1">
+        <a href="https://andrefguirro.github.io/portifolio-main/" target="_blank" rel="noopener noreferrer">
+          <em>Desenvolvido por André Guirro</em>
+        </a>
+      </div>
     </div>
-    <a href="https://andrefguirro.github.io/portifolio-main/"
-              target="_blank"
-              rel="noopener noreferrer"
-            ><p><em>Desenvolvido por André Guirro</em></p>            
-    </a>
   </footer>
 
   <!-- Scripts -->
